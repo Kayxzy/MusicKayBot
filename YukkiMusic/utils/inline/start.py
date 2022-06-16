@@ -62,8 +62,11 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["S_B_8"], callback_data="settings_back_helper"
-            )
+                text=_["S_B_7"], callback_data="settings_back_helper"
+            ),
+            InlineKeyboardButton(
+                text=_["ST_B_6"], callback_data="LG"
+            ),
         ]
     ]
     if SUPPORT_CHANNEL and SUPPORT_GROUP:
@@ -102,11 +105,11 @@ def private_panel(_, BOT_USERNAME, OWNER: Union[bool, int] = None):
             )
         ]
     )
-    if OWNER:
+    if GITHUB_REPO:
         buttons.append(
             [
-                InlineKeyboardButton(text=_["S_B_7"], user_id=OWNER),
-                InlineKeyboardButton(text=_["ST_B_6"], callback_data="LG",
-                ),
+                InlineKeyboardButton(
+                    text=_["S_B_6"], url=f"{GITHUB_REPO}"),
             ]
         )
+    return buttons
